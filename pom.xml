@@ -5,14 +5,16 @@
 
     <groupId>com.mavi</groupId>
     <artifactId>microservices-kafka-poc</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>microservices-kafka-poc</name>
     <description>POC project for Microservices with Kafka</description>
 
     <properties>
         <java.version>11</java.version>
-        <docker.base.image>openjdk:11-jdk-alpine</docker.base.image>
+        <jib.version>1.5.1</jib.version>
+        <docker.base.image>openjdk:11-jdk</docker.base.image>
+        <docker.registry>docker.io/nelsonmavi</docker.registry>
     </properties>
 
     <parent>
@@ -83,10 +85,17 @@
                 <plugin>
                     <groupId>com.google.cloud.tools</groupId>
                     <artifactId>jib-maven-plugin</artifactId>
+                    <version>${jib.version}</version>
                 </plugin>
-
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
             </plugins>
-
         </pluginManagement>
     </build>
 

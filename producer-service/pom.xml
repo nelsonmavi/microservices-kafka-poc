@@ -5,11 +5,12 @@
     <parent>
         <artifactId>microservices-kafka-poc</artifactId>
         <groupId>com.mavi</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.2-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>producer-service</artifactId>
+
     <packaging>jar</packaging>
 
     <build>
@@ -34,9 +35,20 @@
                         <image>${docker.base.image}</image>
                     </from>
                     <to>
-                        <image>${project.artifactId}</image>
+                        <image>${docker.registry}/${project.artifactId}</image>
+                        <tags>
+                            <tag>${project.version}</tag>
+                        </tags>
                     </to>
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
 

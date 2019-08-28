@@ -1,0 +1,12 @@
+version: '3'
+services:
+  producer:
+    image: nelsonmavi/producer-service
+    ports:
+      - 8080:8080
+  consumer:
+    image: nelsonmavi/consumer-service
+    ports:
+      - 8081:8081
+    depends_on:
+      - producer
